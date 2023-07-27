@@ -1,10 +1,11 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useContext, useDebugValue, useEffect, useState } from 'react'
 import { Buttons } from './Buttons'
 import { ArrayContext } from './Home'
 import { handleClick } from '../utils/conditiButt'
 import { Paint } from './Paint'
 import Info from './Info'
 import { SelectedItems } from './SelectedItems'
+import { Option } from './Option'
 
 export const Inventory = () => {
     const { array } = useContext(ArrayContext)
@@ -12,32 +13,9 @@ export const Inventory = () => {
     const [types, setTypes] = useState(array.weapons)
     const [select, setSelect] = useState([])
     const [items, setItems] = useState({})
+    const [mostrarComponente, setMostrarComponente] = useState(false);
 
-
-    const [click,setClick] = useState('')
-
-    const buttonDouble = document.querySelector('.buttonDouble')
-    console.log(buttonDouble);
-
-     let primerClic = 0;
-     const intervaloMaximo = 300
-   
-     const doubleClick = () => {
-        console.log('hola');
-     }
-
-     buttonDouble?.addEventListener('click', function() {
-        const tiempoActual = new Date().getTime();
-      
-  
-        if (tiempoActual - primerClic < intervaloMaximo) {
-            doubleClick();
-          primerClic = 0; 
-        } else {
-          primerClic = tiempoActual;
-        }
-      });
-   
+console.log(select);
 
 
 
@@ -70,18 +48,21 @@ export const Inventory = () => {
                                 value={inventory.value}
                                 array={array}
                                 setSelect={setSelect}
+                                setMostrarComponente= {setMostrarComponente}
+                                mostrarComponente = {mostrarComponente}
                             />
                         })
+                  
                     }
+                    {mostrarComponente && <Option/>}
+                    <SelectedItems/>
                 </div>
 
             </div>
             <div>
                     <Info select={select}/>
             </div>
-            <div>
-                {/* <SelectedItems/> */}
-            </div>
+           
         </>
     )
 }

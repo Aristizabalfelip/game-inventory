@@ -1,0 +1,32 @@
+.contenedor {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 300px; /* Ajusta la altura según tus necesidades */
+    width: 310px; /* Ajusta el ancho según tus necesidades */
+    margin: 0 auto; /* Centrar el contenedor horizontalmente */
+  }
+  
+  .lado-izquierdo,
+  .lado-derecho {
+    
+    flex: 1; /* Para que los divs ocupen el mismo espacio */
+    height: 100px; /* Ajusta el alto de los divs según tus necesidades */
+    background-color: #4882b0; /* Color de fondo de los lados izquierdo y derecho */
+    margin: 5px; 
+
+  }
+  
+  .centro {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 5px; /* Espacio entre los divs centrales */
+  }
+  
+  .centro > div {
+    width: 100px; /* Ajusta el ancho de los divs centrales  */
+    height: 100px; /* Ajusta el alto de los divs centrales  */
+    background-color:#4882b0;
+  }

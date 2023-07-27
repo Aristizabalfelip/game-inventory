@@ -8,7 +8,7 @@ const Info = ({ select }) => {
             <section>
                 <article>
                     <img src="" alt="" />
-                    <p></p>
+                    <p>{select[4]}</p>
                     <img src="/_next/static/media/sword.91ac01bf.svg" alt="" />
                     <p>{select[2]}</p>
                 </article>
