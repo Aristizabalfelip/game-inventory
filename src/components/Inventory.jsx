@@ -1,4 +1,4 @@
-import React, { useContext, useDebugValue, useEffect, useState } from 'react'
+import React, { createContext, useContext, useEffect, useState } from 'react'
 import { Buttons } from './Buttons'
 import { ArrayContext } from './Home'
 import { handleClick } from '../utils/conditiButt'
@@ -7,17 +7,14 @@ import Info from './Info'
 import { SelectedItems } from './SelectedItems'
 import { Option } from './Option'
 
+export const SelectContext = createContext();
+
 export const Inventory = () => {
     const { array } = useContext(ArrayContext)
 
     const [types, setTypes] = useState(array.weapons)
     const [select, setSelect] = useState([])
-    const [items, setItems] = useState({})
-    const [mostrarComponente, setMostrarComponente] = useState(false);
-
-console.log(select);
-
-
+    const [showcomponent, setShowcomponent] = useState(false);
 
 
     useEffect(() => {
@@ -25,7 +22,7 @@ console.log(select);
             setTypes(array.weapons)
         }
     }, [array])
-    
+
 
 
 
@@ -48,21 +45,29 @@ console.log(select);
                                 value={inventory.value}
                                 array={array}
                                 setSelect={setSelect}
-                                setMostrarComponente= {setMostrarComponente}
-                                mostrarComponente = {mostrarComponente}
+                                select={select}
+                                setShowcomponent={setShowcomponent}
+                                showcomponent={showcomponent}
+
                             />
                         })
-                  
+
                     }
-                    {mostrarComponente && <Option/>}
-                    <SelectedItems/>
+                    {
+                        <SelectContext.Provider value={{select}}>
+                            {showcomponent && <Option />}
+                        </SelectContext.Provider>
+                    }
+                    <SelectedItems />
                 </div>
 
             </div>
             <div>
-                    <Info select={select}/>
+
+                <Info select={select} />
+
             </div>
-           
+
         </>
     )
 }

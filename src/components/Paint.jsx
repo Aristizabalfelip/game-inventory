@@ -1,37 +1,39 @@
 import { useState } from "react"
-import { Option } from "./Option"
 
 
 
+export const Paint = ({ img, value, name, category, stats, description,
+   setSelect,setShowcomponent}) => {
 
-
-
-
-export const Paint = ({ img, value, name, category, stats, description, setSelect,setMostrarComponente,mostrarComponente }) => {
-
-  const [ boolean, setBoolean] = useState(false)
   const [seleccionado, setSeleccionado] = useState(false);
+
  
+
   const firstClick = () => {
+    setShowcomponent(false)
     setSeleccionado(true);
-    setBoolean(false)
-    setSelect([name, category, Object.values(stats), description,10])
+    setSelect([name, category, Object.values(stats), description,10,img])
   }
 
 
-  const doubleClick = () => {
-   
-    console.log('soy segundo click');
-    setMostrarComponente(true);
 
+  const doubleClick = () => {
+    setShowcomponent(true);
   };
+
   const handleDobleClic = () => {
     if (!seleccionado) {
       firstClick();
-    } else {
+        } else {
       doubleClick();
+      setSeleccionado(false);
     }
+
   };
+
+
+
+
   return (
     <>
     <div >

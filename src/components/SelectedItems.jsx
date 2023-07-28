@@ -7,14 +7,14 @@ export const SelectedItems = () => {
 
 
   return (
-    <div class="contenedor">
-      <div class="lado-izquierdo"></div>
-      <div class="centro">
+    <div className="contenedor">
+      <div className="lado-izquierdo"></div>
+      <div className="centro">
         <div></div>
         <div></div>
         <div></div>
       </div>
-      <div class="lado-derecho"></div>
+      <div className="lado-derecho"></div>
     </div>
   )
 }
