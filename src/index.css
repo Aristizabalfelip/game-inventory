@@ -2,8 +2,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 300px; /* Ajusta la altura según tus necesidades */
-    width: 310px; /* Ajusta el ancho según tus necesidades */
+    height: 300px; /* Ajusta la altura  */
+    width: 310px; /* Ajusta el ancho  */
     margin: 0 auto; /* Centrar el contenedor horizontalmente */
   }
   

@@ -8,14 +8,15 @@ import { SelectedItems } from './SelectedItems'
 import { Option } from './Option'
 
 export const SelectContext = createContext();
+export const PartsContext = createContext();
 
 export const Inventory = () => {
     const { array } = useContext(ArrayContext)
 
     const [types, setTypes] = useState(array.weapons)
-    const [select, setSelect] = useState([])
+    const [select, setSelect] = useState({})
     const [showcomponent, setShowcomponent] = useState(false);
-
+    const [parts, setParts] = useState([])
 
     useEffect(() => {
         if (array) {
@@ -32,40 +33,34 @@ export const Inventory = () => {
                 <Buttons name={'weapons'} handleClick={() => setTypes(handleClick('weapons', array))} />
                 <Buttons name={'shields'} handleClick={() => setTypes(handleClick('shields', array))} />
                 <Buttons name={'armors'} handleClick={() => setTypes(handleClick('armors', array))} />
-                <div style={{ display: 'flex', flexWrap: 'wrap' }}>
+                <div style={{ display: 'flex', flexWrap: 'wrap', gap:' 5px'}}>
                     {
                         types?.map((inventory, i) => {
-                            return < Paint
+                            return <Paint
                                 key={i}
-                                name={inventory.name}
-                                category={inventory.category}
-                                stats={inventory.stats}
-                                description={inventory.description}
-                                img={inventory.icon}
+                                inventory={inventory}                                                                                                                          img={inventory.icon}
                                 value={inventory.value}
-                                array={array}
-                                setSelect={setSelect}
-                                select={select}
+                                setSelect={setSelect} 
+                                select = {select} 
                                 setShowcomponent={setShowcomponent}
-                                showcomponent={showcomponent}
-
-                            />
+                                />
                         })
-
                     }
-                    {
-                        <SelectContext.Provider value={{select}}>
-                            {showcomponent && <Option />}
+                
+                        <SelectContext.Provider value={{ select }}>
+                            {showcomponent && <Option
+                                setParts={setParts}
+                                parts={parts} />}
                         </SelectContext.Provider>
-                    }
-                    <SelectedItems />
+                    
+                    < PartsContext.Provider value={{parts}}>
+                        <SelectedItems />
+                    </PartsContext.Provider>
                 </div>
 
             </div>
             <div>
-
                 <Info select={select} />
-
             </div>
 
         </>
