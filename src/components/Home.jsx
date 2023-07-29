@@ -2,10 +2,11 @@ import React, { createContext, useEffect, useState } from 'react'
 import { Buttons } from './Buttons'
 import { Inventory } from './Inventory'
 import { awaitFunction } from '../utils/awaitFun'
+import { ButtonPage } from './ButtonPage';
 
 export const ArrayContext = createContext();
 
-export const Home = () => {
+export const Home = ({setStateParts}) => {
 
     const [array, setArray] = useState([])
 
@@ -15,13 +16,16 @@ export const Home = () => {
 
 
     return (
-        <div>
-            <header>Game Inventory Mini Project</header>
-            < Buttons name={'Inventory'} />
-            < Buttons name={'Character'} />
+        <div className='flex flex-col gap-8' >
+            <header className='flex justify-center font-sans text-4xl font-extrabold text-white'>Game Inventory Mini Project</header>
+            <div className='flex justify-center gap-7 p-2'>
+                < Buttons name={'Inventory'} />
+                < ButtonPage />
+            </div>
             < ArrayContext.Provider value={{ array }}>
-                < Inventory 
-                setArray = {setArray}/>
+                < Inventory
+                    setArray={setArray}
+                    setStateParts =  {setStateParts} />
             </ArrayContext.Provider>
 
         </div>

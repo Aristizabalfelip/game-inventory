@@ -8,18 +8,21 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 300px; /* Ajusta la altura  */
-    width: 310px; /* Ajusta el ancho  */
-    margin: 0 auto; /* Centrar el contenedor horizontalmente */
+    height: 300px; 
+    width: 240px; 
+    margin: 0 auto; 
+  
   }
   
   .lado-izquierdo,
   .lado-derecho {
     
-    flex: 1; /* Para que los divs ocupen el mismo espacio */
-    height: 100px; /* Ajusta el alto de los divs según tus necesidades */
-    background-color: #4882b0; /* Color de fondo de los lados izquierdo y derecho */
+    flex: 1; 
+    height: 70px; 
+    /* width: 70px; */
+    background-color: rgb(30 41 59); 
     margin: 5px; 
+    border: 1px solid rgb(253 244 255);
 
   }
   
@@ -28,11 +31,16 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 5px; /* Espacio entre los divs centrales */
+    gap: 5px; 
   }
   
   .centro > div {
-    width: 100px; /* Ajusta el ancho de los divs centrales  */
-    height: 100px; /* Ajusta el alto de los divs centrales  */
-    background-color:#4882b0;
+    width: 70px; 
+    height:70px; 
+    background-color:rgb(30 41 59);
+    border: 0.5px solid rgb(253 244 255);
+  }
+  
+  body {
+    background-color: rgb(51 65 85);
   }

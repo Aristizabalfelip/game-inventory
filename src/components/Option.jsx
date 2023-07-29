@@ -1,16 +1,11 @@
 import React, { useContext } from 'react'
 import { SelectContext } from './Inventory'
 
-
-
 export const Option = ({ setParts, parts, setShowcomponent,setTypes,types,setArray,array}) => {
-
 
   const { select } = useContext(SelectContext)
 
-
   const handleEquip = () => {
-
     if (!parts.map(obj => obj.name).includes(select.name)) {
       setParts(prev => {
         const holdPrev = [...prev]
@@ -26,8 +21,6 @@ export const Option = ({ setParts, parts, setShowcomponent,setTypes,types,setArr
     } else {
       setParts(parts.filter((obj => obj.name !== select.name)) )
     }
-
-
   }
 
   const nameButton = () => { 
@@ -42,7 +35,6 @@ export const Option = ({ setParts, parts, setShowcomponent,setTypes,types,setArr
    
    if (types.map(obj => obj.category).includes('armor' || 'helm' || 'greave')) {
    
- 
     const newState = {...array}
     newState.armors = array.armors.filter((obj => obj.name !== select.name))
     setArray(newState)
@@ -69,10 +61,10 @@ export const Option = ({ setParts, parts, setShowcomponent,setTypes,types,setArr
 
   return (
     <div>
-      <ul className='flex flex-col border-2 p-2 items-start gap-1'>
-        <button className= 'p-2 border-2 w-16'onClick={handleEquip}>{nameButton()}</button>
-        <button className= 'p-2 border-2 w-16'onClick={handleThrow}>Throw</button>
-        <button className= 'p-2 border-2 w-16'onClick={handleCancel}>Cancel</button>
+      <ul className='flex flex-col border p-3 items-start gap-1 bg-slate-900 text-white'>
+        <button className= 'p-2 border w-16'onClick={handleEquip}>{nameButton()}</button>
+        <button className= 'p-2 border w-16'onClick={handleThrow}>Throw</button>
+        <button className= 'p-2 border w-16'onClick={handleCancel}>Cancel</button>
       </ul>
     </div>
   )

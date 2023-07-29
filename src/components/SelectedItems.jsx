@@ -6,7 +6,6 @@ export const SelectedItems = () => {
   const { parts } = useContext(PartsContext)
 
   const divLeft = (word) => {
-
     const result = parts?.find(obj => obj.category === word)
     return result ? result.icon : ''
   }
@@ -27,20 +26,15 @@ export const SelectedItems = () => {
     return result ? result.icon : ''
   }
 
-
-
-
-
-
   return (
     <div className="contenedor">
-      <div className="lado-izquierdo"><img src={divLeft('weapon')} alt="" /></div>
+      <div className="lado-izquierdo flex items-center  justify-center"><img className= 'h-14 'src={divLeft('weapon')} alt=""  /></div>
       <div className="centro">
-        <div><img  src={divCenterUp('helm')} alt=""  height="96" /></div>
-        <div><img src={divCenterCenter('armor')} alt="" /></div>
-        <div><img src={divCenterDown('greave')} alt="" height="96" /></div>
+        <div className='flex items-center  justify-center'><img className= 'h-14 ' src={divCenterUp('helm')} alt=""  /></div>
+        <div className='flex items-center  justify-center'><img className= 'h-14 'src={divCenterCenter('armor')} alt="" /></div>
+        <div className='flex items-center  justify-center'><img className= 'h-14 ' src={divCenterDown('greave')} alt=""  /></div>
       </div>
-      <div className="lado-derecho"><img src={divRight('shield')} alt="" /></div>
+      <div className="lado-derecho flex items-center  justify-center"><img className= 'h-14 ' src={divRight('shield')} alt="" /></div>
     </div>
   )
 }
