@@ -1,10 +1,12 @@
-import { useEffect, useState } from "react"
+import {  useState } from "react"
 
 
 
-export const Paint = ({ img, value, inventory, setSelect, setShowcomponent, select }) => {
+export const Paint = ({ img, value, inventory, setSelect, setShowcomponent, select,parts }) => {
 
   const [seleccionado, setSeleccionado] = useState(false);
+
+
 
 
   const firstClick = () => {
@@ -18,17 +20,8 @@ export const Paint = ({ img, value, inventory, setSelect, setShowcomponent, sele
 
   const doubleClick = () => {
     setShowcomponent(true);
-    //   console.log(select);
-    // console.log(inventory.name);
-    console.log('COMPARACION', select.name?.includes(inventory.name));
-   
   };
 
-  // const validar  = select ? select.name.includes(inventory.name) : 'hola'
-
-  // console.log( select ? select.name.includes(inventory.name) : 'hola'
-
-  // );
 
 
   const handleDobleClic = () => {
@@ -45,12 +38,12 @@ export const Paint = ({ img, value, inventory, setSelect, setShowcomponent, sele
 
   return (
     <>
-      <div >
+      <div className="border-2 h-36"  style={{backgroundColor: parts.map( obj => obj.name).includes(inventory.name) ? '#4882b0' : '', padding:'5px'}} >
         <button className="buttonDouble" onClick={handleDobleClic} >
-          <img src={img} alt="" height="96" />
+          <img  className = 'h-24'src={img} alt=""  />
           <p>{value}</p>
         </button>
-        <hr style={{borderColor: select.name?.includes(inventory.name)? 'blue' : 'silver'}} />
+        <hr style={{borderColor: select.name?.includes(inventory.name)? 'blue' : 'white '}} />
       </div>
 
 

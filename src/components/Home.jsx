@@ -20,7 +20,8 @@ export const Home = () => {
             < Buttons name={'Inventory'} />
             < Buttons name={'Character'} />
             < ArrayContext.Provider value={{ array }}>
-                < Inventory />
+                < Inventory 
+                setArray = {setArray}/>
             </ArrayContext.Provider>
 
         </div>

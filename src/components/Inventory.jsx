@@ -10,10 +10,10 @@ import { Option } from './Option'
 export const SelectContext = createContext();
 export const PartsContext = createContext();
 
-export const Inventory = () => {
+export const Inventory = ({setArray}) => {
     const { array } = useContext(ArrayContext)
 
-    const [types, setTypes] = useState(array.weapons)
+    const [types, setTypes] = useState()
     const [select, setSelect] = useState({})
     const [showcomponent, setShowcomponent] = useState(false);
     const [parts, setParts] = useState([])
@@ -23,9 +23,6 @@ export const Inventory = () => {
             setTypes(array.weapons)
         }
     }, [array])
-
-
-
 
     return (
         <>
@@ -43,6 +40,7 @@ export const Inventory = () => {
                                 setSelect={setSelect} 
                                 select = {select} 
                                 setShowcomponent={setShowcomponent}
+                                parts = {parts}
                                 />
                         })
                     }
@@ -50,7 +48,13 @@ export const Inventory = () => {
                         <SelectContext.Provider value={{ select }}>
                             {showcomponent && <Option
                                 setParts={setParts}
-                                parts={parts} />}
+                                parts={parts}
+                                setShowcomponent = {setShowcomponent}
+                                setTypes = {setTypes}
+                                types = {types}
+                                setArray = {setArray}
+                                array = {array}
+                                />}
                         </SelectContext.Provider>
                     
                     < PartsContext.Provider value={{parts}}>
